@@ -88,6 +88,8 @@ body.lock main{display:none}
 .badge i{font-style:normal;font-size:26px;width:36px;text-align:center}
 .badge b{display:block}.badge span{font-size:13px;color:var(--mute)}
 .badge.off{opacity:.45;filter:grayscale(1)}
+.row input.tm{width:116px;flex:none;margin:0 0 0 auto;padding:8px;font:500 16px Barlow,sans-serif;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}
+.ed .tp{grid-column:1/3}
 .wk{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:14px 0 0}
 .wk span{font-weight:600;color:var(--mute)}
 .wk button{width:48px;height:38px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;font-size:22px;line-height:1}
@@ -289,10 +291,11 @@ function getHAB(){return S._hab||HAB}
 function editList(box,key,arr,nuevo){
  var c=JSON.parse(JSON.stringify(arr));S[key]=c;save();
  c.forEach(function(x,i){var d=document.createElement("div");d.className="ed w";
-  d.innerHTML='<input aria-label="Nombre"><input aria-label="Detalle u horario"><button class="x" aria-label="Quitar">✕</button>';
+  d.innerHTML='<input aria-label="Nombre"><input aria-label="Detalle"><button class="x" aria-label="Quitar">✕</button>'+(key==="_com"?'<input class="tp" type="time" aria-label="Hora de esta comida">':'');
   var ip=d.querySelectorAll("input");ip[0].value=x[0];ip[1].value=x[1];
   ip[0].oninput=function(){c[i][0]=ip[0].value;save()};
   ip[1].oninput=function(){c[i][1]=ip[1].value;save()};
+  if(ip[2]){ip[2].value=x[2]||"";ip[2].onchange=function(){c[i][2]=ip[2].value;save()}}
   d.querySelector(".x").onclick=function(){c.splice(i,1);save();render()};
   box.appendChild(d)});
  var f=document.createElement("div");f.className="edfoot";
@@ -326,10 +329,10 @@ function ent(k){if(!S[k])S[k]={};return S[k]}
 function fechaDe(wd,o){var d=new Date(),cur=d.getDay()||7;d.setDate(d.getDate()+(wd-cur)+7*(o===undefined?off:o));return ymd(d)}
 function ids(wd){var r=getR(wd),a=[],i;for(i=0;i<r.e.length;i++)a.push("e"+i);a.push("c");for(i=0;i<getCOM().length;i++)a.push("m"+i);for(i=0;i<getHAB().length;i++)a.push("h"+i);return a}
 function pct(k,wd){var e=ent(k),a=ids(wd),n=0;a.forEach(function(x){if(e[x])n++});return Math.round(n/a.length*100)}
-function fila(id,t,s,e,k,kg){var d=document.createElement("label");d.className="row"+(e[id]?" on":"");
-d.innerHTML='<input type="checkbox"'+(e[id]?" checked":"")+'><div><b>'+t+'</b><span>'+s+'</span></div>'+(kg?'<input class="kg" type="number" inputmode="decimal" step="0.5" placeholder="kg" aria-label="Peso usado">':'');
-d.querySelector("input").onchange=function(ev){e[id]=ev.target.checked;save();d.className="row"+(e[id]?" on pop":"");try{navigator.vibrate&&navigator.vibrate(12)}catch(x){}var was=document.getElementById("barra").className==="full";upd();if(!was&&document.getElementById("barra").className==="full")confetti()};
-var q=d.querySelector(".kg");if(q){q.value=e["k"+id]||"";q.oninput=function(){var v=parseFloat(q.value.replace(",","."));if(isNaN(v))delete e["k"+id];else e["k"+id]=v;save()}}return d}
+function fila(id,t,s,e,k,kg,tm){var d=document.createElement("label");d.className="row"+(e[id]?" on":"");
+d.innerHTML='<input type="checkbox"'+(e[id]?" checked":"")+'><div><b>'+t+'</b><span>'+s+'</span></div>'+(kg?'<input class="kg" type="number" inputmode="decimal" step="0.5" placeholder="kg" aria-label="Peso usado">':'')+(tm?'<input class="tm" type="time" aria-label="Hora a la que lo hiciste">':'');
+d.querySelector("input").onchange=function(ev){e[id]=ev.target.checked;if(tm){var ti=d.querySelector(".tm");if(e[id]&&!e["t"+id]){var nw=new Date();e["t"+id]=("0"+nw.getHours()).slice(-2)+":"+("0"+nw.getMinutes()).slice(-2)}if(!e[id])delete e["t"+id];ti.value=e["t"+id]||""}save();d.className="row"+(e[id]?" on pop":"");try{navigator.vibrate&&navigator.vibrate(12)}catch(x){}var was=document.getElementById("barra").className==="full";upd();if(!was&&document.getElementById("barra").className==="full")confetti()};
+var q=d.querySelector(".kg");if(q){q.value=e["k"+id]||"";q.oninput=function(){var v=parseFloat(q.value.replace(",","."));if(isNaN(v))delete e["k"+id];else e["k"+id]=v;save()}}var ti2=d.querySelector(".tm");if(ti2){ti2.value=e["t"+id]||"";ti2.onchange=function(){if(ti2.value)e["t"+id]=ti2.value;else delete e["t"+id];save()}}return d}
 function render(){
  var k=fechaDe(dia),e=ent(k),r=getR(dia);hoyKey=k;
  document.getElementById("edbtn").textContent=edit?"Listo":"Editar plan";
@@ -341,7 +344,7 @@ function render(){
  r.e.forEach(function(x,i){R.appendChild(fila("e"+i,x[0],x[1],e,k,true))});
  R.appendChild(fila("c","Cardio",r.c,e,k));}
  var C=document.getElementById("comidas");C.innerHTML="";
- if(edit){editList(C,"_com",getCOM(),["Nueva comida","Hora"])}else getCOM().forEach(function(x,i){C.appendChild(fila("m"+i,x[0],x[1],e,k))});
+ if(edit){editList(C,"_com",getCOM(),["Nueva comida","Hora"])}else getCOM().forEach(function(x,i){C.appendChild(fila("m"+i,x[0]+(x[2]?" · "+x[2]:""),x[1],e,k,false,true))});
  var H=document.getElementById("habitos");H.innerHTML="";
  if(edit){editList(H,"_hab",getHAB(),["Nuevo hábito","Detalle"])}else getHAB().forEach(function(x,i){H.appendChild(fila("h"+i,x[0],x[1],e,k))});
  document.getElementById("peso").value=e.peso||"";
