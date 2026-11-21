@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Mi plan de 3 meses</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f9fe;--surface:#fff;--ink:#14213d;--mute:#5b6577;--line:#e4e9f3;--acc:#1f4fd8;--accink:#fff;--ok:#1b8a5a;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1626;--surface:#17233a;--ink:#e8edf7;--mute:#94a1b8;--line:#2a3a58;--acc:#6e93ff;--accink:#0e1626;--ok:#4cc38a}}
+:root[data-theme="dark"]{--bg:#0e1626;--surface:#17233a;--ink:#e8edf7;--mute:#94a1b8;--line:#2a3a58;--acc:#6e93ff;--accink:#0e1626;--ok:#4cc38a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.45 Barlow,system-ui,sans-serif}
+main{max-width:560px;margin:0 auto;padding:16px 16px 96px}
+h1,h2{font-family:"Barlow Condensed",system-ui,sans-serif;margin:0;letter-spacing:.01em}
+h1{font-size:30px;font-weight:700}
+h2{font-size:22px;font-weight:600;margin:22px 0 8px}
+.sub{color:var(--mute);margin:2px 0 14px}
+.tabs,.days{display:flex;gap:6px}
+.tabs button,.days button{flex:1;padding:10px 0;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;font:600 15px Barlow,sans-serif}
+.tabs button[aria-selected="true"],.days button[aria-selected="true"]{background:var(--acc);color:var(--accink);border-color:var(--acc)}
+.days{margin:12px 0}
+.days button{position:relative}
+.days button.done::after{content:"";position:absolute;top:5px;right:6px;width:8px;height:8px;border-radius:50%;background:var(--ok)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:6px 14px}
+.row{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.row input[type=checkbox]{width:24px;height:24px;margin:1px 0 0;accent-color:var(--acc);flex:none}
+.row b{display:block;font-weight:600}
+.row span{color:var(--mute);font-size:14px}
+.row.on b{text-decoration:line-through;color:var(--mute)}
+.bar{height:10px;background:var(--line);border-radius:6px;overflow:hidden;margin:6px 0 4px}
+.bar i{display:block;height:100%;background:var(--ok);width:0;transition:width .25s}
+.pill{display:flex;justify-content:space-between;color:var(--mute);font-size:14px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+label.f{display:block;font-weight:600;font-size:14px;color:var(--mute)}
+input[type=number]{width:100%;margin-top:4px;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font:500 18px Barlow,sans-serif}
+.btn{width:100%;margin-top:10px;padding:12px;border:0;border-radius:10px;background:var(--acc);color:var(--accink);font:600 16px Barlow,sans-serif}
+.btn.ghost{background:transparent;color:var(--mute);border:1px solid var(--line)}
+.macros{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;text-align:center;margin-bottom:6px}
+.macros div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 2px}
+.macros b{font:700 20px "Barlow Condensed",sans-serif;display:block}
+.macros span{font-size:12px;color:var(--mute)}
+.stat{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)}
+.stat:last-child{border-bottom:0}
+svg{width:100%;height:120px;display:block}
+.tbl{overflow-x:auto}
+.hide{display:none}
+.verse{background:var(--surface);border-left:4px solid var(--acc);border-radius:10px;padding:10px 14px;margin:0 0 14px}
+.verse p{margin:0 0 4px;font-style:italic}.verse small{color:var(--mute);font-weight:600}
+.perf{display:flex;gap:6px;margin:8px 0 12px}
+.perf button{flex:1;padding:10px 0;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;font:600 15px Barlow,sans-serif}
+.perf button[aria-selected="true"]{background:var(--acc);color:var(--accink);border-color:var(--acc)}
+.hd{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:22px}.hd h2{margin:0}
+.mini{padding:8px 12px;border:1px solid var(--acc);background:transparent;color:var(--acc);border-radius:10px;font:600 14px Barlow,sans-serif}
+.ed{display:grid;grid-template-columns:1fr 92px 38px;gap:6px;padding:8px 0;border-bottom:1px solid var(--line)}
+.ed.c{grid-template-columns:1fr}
+.ed input{width:100%;min-width:0;padding:9px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);font:500 15px Barlow,sans-serif}
+.ed .x{border:1px solid var(--line);background:transparent;color:var(--mute);border-radius:8px;font-size:16px}
+.edfoot{display:flex;gap:8px;padding:10px 0}.edfoot .btn{margin:0}
+.row input.kg{width:76px;flex:none;margin:0 0 0 auto;padding:8px;font-size:16px}
+.rest{position:fixed;left:0;right:0;bottom:0;z-index:5;display:flex;gap:6px;align-items:center;justify-content:center;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:var(--surface);border-top:1px solid var(--line)}
+.rest span{font:700 24px "Barlow Condensed",sans-serif;min-width:92px}
+.rest button{padding:9px 12px;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:10px;font:600 14px Barlow,sans-serif}
+textarea{width:100%;min-height:90px;margin-top:8px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);padding:8px;font:12px monospace}
+button:focus-visible,input:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+body.lock main{display:none}
+.gate{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:20px;background:linear-gradient(135deg,var(--g1),var(--g2))}
+.gate.hide{display:none}
+.gbox{background:var(--surface);border-radius:22px;padding:22px;width:100%;max-width:380px;box-shadow:0 24px 50px -20px rgba(0,0,0,.55)}
+.gbox h2{margin-top:0;font-size:28px}
+.gbox .perf{margin:4px 0 14px}
+.gbox .perf button{border-color:var(--line)}
+.gpw{display:flex;gap:8px;margin-top:4px}
+.gpw input{flex:1;min-width:0;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font:500 18px Barlow,sans-serif}
+.gpw button{padding:0 14px;border:1px solid var(--line);background:transparent;color:var(--mute);border-radius:10px;font:600 14px Barlow,sans-serif}
+.gerr{color:#c62828;font-weight:600;min-height:22px;margin:8px 0 0}
+.ed.w{grid-template-columns:1fr 1fr 38px}
+.cron{text-align:center;padding:14px;margin-bottom:6px}
+.ct{font:700 48px "Barlow Condensed",sans-serif;letter-spacing:.04em;line-height:1.1}
+.cs{color:var(--mute);margin:2px 0 10px}
+.cb{display:flex;gap:8px}.cb .btn{margin:0}
+.badge{display:flex;gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
+.badge:last-child{border:0}
+.badge i{font-style:normal;font-size:26px;width:36px;text-align:center}
+.badge b{display:block}.badge span{font-size:13px;color:var(--mute)}
+.badge.off{opacity:.45;filter:grayscale(1)}
+.wk{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:14px 0 0}
+.wk span{font-weight:600;color:var(--mute)}
+.wk button{width:48px;height:38px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;font-size:22px;line-height:1}
+:root{--g1:#2f5bff;--g2:#7c3aed}
+body[data-p="yvi"]{--acc:#c026d3;--g1:#c026d3;--g2:#e11d74}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--g1:#3d5afe;--g2:#7c3aed}:root:not([data-theme="light"]) body[data-p="yvi"]{--acc:#e879f9;--g1:#a21caf;--g2:#be185d}}
+.hero{background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff;border-radius:22px;padding:16px 16px 14px;margin-bottom:16px;box-shadow:0 12px 28px -14px var(--g1)}
+.hero h1{font-size:36px;color:#fff;line-height:1.05}
+.hero .sub{color:rgba(255,255,255,.9);margin:2px 0 12px}
+.hero .perf{margin:12px 0 8px}
+.hero .perf button{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.4);color:#fff}
+.hero .perf button[aria-selected="true"]{background:#fff;color:var(--g1);border-color:#fff}
+.hero .verse{background:rgba(255,255,255,.16);border-left:4px solid #fff;color:#fff;margin:0;border-radius:12px}
+.hero .verse small{color:rgba(255,255,255,.9)}
+.card{border-radius:18px;box-shadow:0 8px 20px -14px rgba(20,33,61,.45)}
+.tabs button[aria-selected="true"],.days button[aria-selected="true"]{background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff;border-color:transparent}
+.btn{background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff}
+.btn.ghost{background:transparent;color:var(--mute)}
+.bar{height:14px;border-radius:8px}
+.bar i{background:linear-gradient(90deg,var(--g1),var(--g2))}
+.bar i.full{background:linear-gradient(90deg,#12a56a,#7ddc4f)}
+.pill{font-weight:600}
+h2{display:flex;align-items:center;gap:8px}
+h2::before{content:"";width:6px;height:22px;border-radius:3px;background:linear-gradient(var(--g1),var(--g2))}
+.hd h2{margin:0}
+.row.on{background:linear-gradient(90deg,rgba(18,165,106,.16),transparent);margin:0 -14px;padding-left:14px;padding-right:14px}
+.macros div{border-radius:14px;border-top:4px solid var(--line)}
+.macros div:nth-child(1){border-top-color:#ff7a3d}.macros div:nth-child(2){border-top-color:#2f5bff}.macros div:nth-child(3){border-top-color:#12a56a}.macros div:nth-child(4){border-top-color:#e11d74}
+.macros b{font-size:24px}
+.rest{box-shadow:0 -10px 26px -16px rgba(0,0,0,.5)}
+.rest span{color:var(--acc)}
+.rest button[data-s]{background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff;border:0}
+@media (prefers-reduced-motion:no-preference){.hero{animation:entra .5s ease}@keyframes entra{from{opacity:0;transform:translateY(8px)}}}
+.hero{background:linear-gradient(120deg,var(--g1),var(--g2),var(--g1));background-size:200% 200%}
+.sil{padding:12px 14px;margin-bottom:6px}
+.sw{display:flex;align-items:center;gap:14px}
+.sw figure{margin:0;width:74px;text-align:center;flex:none}
+.sw svg{width:74px;height:152px}
+.sw figcaption{font-size:12px;color:var(--mute)}
+.z,.h{fill:var(--line)}
+.z.on{fill:var(--g1)}
+.chip{display:inline-block;margin:6px 6px 0 0;padding:4px 11px;border-radius:20px;background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff;font-weight:600;font-size:13px}
+.conf{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:20}
+.conf i{position:absolute;top:-14px;width:9px;height:14px;border-radius:2px}
+@media (prefers-reduced-motion:no-preference){
+.hero{animation:entra .5s ease,flujo 14s ease-in-out infinite}
+@keyframes flujo{50%{background-position:100% 50%}}
+.z.on{animation:lat 1.8s ease-in-out infinite}
+@keyframes lat{50%{opacity:.5}}
+.row.pop{animation:pop .3s ease}
+@keyframes pop{50%{transform:scale(1.03)}}
+.conf i{animation:cae 1.9s ease-in forwards}
+@keyframes cae{to{transform:translate(var(--dx),105vh) rotate(720deg)}}}
+@media (prefers-reduced-motion:reduce){.conf{display:none}}
+</style>
+</head>
+<body>
+<main>
+<div class="rest" role="group" aria-label="Temporizador de descanso"><span id="rtime" aria-live="polite">Descanso</span><button data-s="60">60 s</button><button data-s="90">90 s</button><button data-s="120">2 min</button><button id="rstop" aria-label="Detener">✕</button></div>
+<div class="hero">
+<h1 id="h1">Plan de Iván</h1>
+<div class="perf" id="perf" role="group" aria-label="Perfil"><button data-p="ivan" aria-selected="true">Iván</button><button data-p="yvi" aria-selected="false">Yvi</button></div>
+<p class="sub" id="fecha"></p>
+<div class="verse" id="verse" aria-label="Versículo del día"></div>
+</div>
+<div class="tabs" role="tablist">
+  <button role="tab" aria-selected="true" data-t="hoy">🏋️ Hoy</button>
+  <button role="tab" aria-selected="false" data-t="prog">📈 Progreso</button>
+</div>
+
+<section id="hoy">
+  <div class="wk"><button id="wprev" aria-label="Semana anterior">‹</button><span id="wlbl">Esta semana</span><button id="wnext" aria-label="Semana siguiente">›</button></div>
+  <div class="days" id="days"></div>
+  <div class="bar"><i id="barra"></i></div>
+  <div class="pill"><span id="pct">0%</span><span id="resumen"></span></div>
+
+  <div class="card cron" id="cron"><div class="ct" id="ctime">00:00:00</div><div class="cs" id="csub">Guardado hoy: 0 min</div><div class="cb"><button class="btn" id="cgo">Iniciar</button><button class="btn ghost" id="cfin">Guardar</button></div></div>
+<div class="card sil" id="sil"></div>
+<div class="hd"><h2 id="tit"></h2><button class="mini" id="edbtn">Editar plan</button></div>
+  <div class="card" id="rutina"></div>
+
+  <h2>Comidas</h2>
+  <p class="sub hide" id="nomac">Tus calorías y macros se calculan con tus datos personales, que aún faltan por definir.</p>
+  <div class="macros" id="macros">
+    <div><b>2.500</b><span>kcal</span></div><div><b>170 g</b><span>proteína</span></div>
+    <div><b>295 g</b><span>carbos</span></div><div><b>70 g</b><span>grasas</span></div>
+  </div>
+  <div class="card" id="comidas"></div>
+
+  <h2>Hábitos del día</h2>
+  <div class="card" id="habitos"></div>
+  <div class="grid" style="margin-top:10px">
+    <label class="f">Peso (kg)<input type="number" id="peso" inputmode="decimal" step="0.1" placeholder="95"></label>
+    <label class="f">Celular (horas)<input type="number" id="cel" inputmode="decimal" step="0.5" placeholder="5"></label>
+  </div>
+  <h2>Notas del día</h2>
+  <textarea id="nota" aria-label="Notas del día" placeholder="Cómo te sentiste, el hombro, la energía…"></textarea>
+  <div class="hide">
+  </div>
+</section>
+
+<section id="prog" class="hide">
+  <h2>Resumen</h2>
+  <div class="card" id="stats"></div>
+  <h2>Tiempo de entrenamiento</h2>
+  <div class="card" id="tstats"></div>
+  <div class="card" style="margin-top:10px;padding:12px 14px"><svg id="gtime" viewBox="0 0 300 120" preserveAspectRatio="none"></svg><div class="pill" id="timeinfo"></div></div>
+  <h2>Logros</h2>
+  <div class="card" id="logros"></div>
+  <button class="btn" id="share">Compartir mis resultados</button>
+  <h2>Esta semana</h2>
+  <div class="card" id="sem"></div>
+  <h2>Notas recientes</h2>
+  <div class="card" id="notas"></div>
+  <h2>Peso</h2>
+  <div class="card"><svg id="gpeso" viewBox="0 0 300 120" preserveAspectRatio="none"></svg><div class="pill" id="pesoinfo"></div></div>
+  <h2>Celular (horas por día)</h2>
+  <div class="card"><svg id="gcel" viewBox="0 0 300 120" preserveAspectRatio="none"></svg><div class="pill" id="celinfo"></div></div>
+  <h2>Respaldo</h2>
+  <div class="card" style="padding:12px 14px"><span class="sub">Tus datos viven solo en este navegador. Genera un respaldo y guárdalo en tus notas por si cambias de teléfono.</span>
+  <textarea id="bk" aria-label="Respaldo" placeholder="Aquí aparece tu respaldo o pegas uno para restaurar"></textarea>
+  <button class="btn" id="bkgen">Generar respaldo</button><button class="btn ghost" id="bkres">Restaurar desde el texto</button></div>
+  <button class="btn ghost" id="logout">Cerrar sesión</button>
+  <button class="btn ghost" id="reset">Borrar todos mis datos</button>
+</section>
+</main>
+<div class="gate hide" id="gate" role="dialog" aria-modal="true" aria-labelledby="gt">
+ <div class="gbox">
+  <h2 id="gt">Entrar a mi plan</h2>
+  <p class="sub">Elige tu perfil e ingresa tu contraseña.</p>
+  <div class="perf" id="gp" role="group" aria-label="Perfil"><button data-g="ivan" aria-selected="true">Iván</button><button data-g="yvi" aria-selected="false">Yvi</button></div>
+  <label class="f" for="gpw">Contraseña</label>
+  <div class="gpw"><input id="gpw" type="password" autocomplete="current-password"><button id="gshow" type="button" aria-label="Mostrar u ocultar contraseña">Ver</button></div>
+  <p class="gerr" id="gerr" role="alert"></p>
+  <button class="btn" id="gok">Entrar</button>
+  <button class="btn ghost hide" id="gcan">Cancelar</button>
+ </div>
+</div>
+
+<script>
+var RUT={
+1:{n:"Lunes · Pecho y tríceps",c:"Cardio moderado 25 min",e:[["Press banca","4 × 8-10"],["Press inclinado con mancuernas","3 × 10"],["Aperturas en polea","3 × 12"],["Fondos en paralelas","3 × 10"],["Extensión de tríceps en polea","3 × 12"],["Plancha","3 × 45 s"]]},
+2:{n:"Martes · Espalda y bíceps",c:"Cardio moderado 25 min",e:[["Dominadas","4 × máx"],["Remo con barra","4 × 8-10"],["Jalón al pecho","3 × 10"],["Remo con mancuerna","3 × 12"],["Curl de bíceps","3 × 12"],["Curl martillo","3 × 12"]]},
+3:{n:"Miércoles · Piernas",c:"Cardio suave 20 min",e:[["Sentadilla","4 × 8-10"],["Peso muerto rumano","3 × 10"],["Prensa","3 × 12"],["Zancadas","3 × 12"],["Curl femoral","3 × 12"],["Elevación de talones","4 × 15"]]},
+4:{n:"Jueves · Calistenia",c:"Cardio moderado 25 min",e:[["Flexiones","4 × máx"],["Fondos","4 × 10"],["Dominadas","4 × máx"],["Remo invertido","3 × 12"],["Sentadilla búlgara","3 × 10"],["Elevación de piernas","3 × 12"]]},
+5:{n:"Viernes · Circuito completo",c:"Cardio por intervalos 20 min (30 s fuerte / 60 s suave)",e:[["Sentadilla goblet","4 rondas × 12"],["Flexiones","4 rondas × 12"],["Remo con mancuerna","4 rondas × 12"],["Zancadas","4 rondas × 10"],["Plancha","4 rondas × 40 s"]]}
+};
+var RUTY={
+1:{n:"Lunes · Piernas y glúteos",c:"Cardio moderado 25 min",e:[["Sentadilla","4 × 15"],["Zancadas","3 × 12 por pierna"],["Puente de glúteos","4 × 15"],["Sentadilla sumo","3 × 15"],["Elevación de talones","4 × 20"],["Plancha","3 × 45 s"]]},
+2:{n:"Martes · Empuje y core",c:"Cardio moderado 25 min",e:[["Flexiones","4 × 10-12"],["Fondos en silla","3 × 12"],["Flexiones con manos elevadas","3 × 12"],["Plancha lateral","3 × 30 s por lado"],["Mountain climbers","3 × 30 s"]]},
+3:{n:"Miércoles · Piernas y glúteos B",c:"Cardio suave 20 min",e:[["Sentadilla búlgara","3 × 10 por pierna"],["Peso muerto a una pierna","3 × 10"],["Puente de glúteos a una pierna","3 × 12"],["Zancadas caminando","3 × 16"],["Sentadilla isométrica en pared","3 × 40 s"],["Abdominales","3 × 15"]]},
+4:{n:"Jueves · Espalda y core",c:"Cardio moderado 25 min",e:[["Superman","4 × 12"],["Remo con mochila cargada","4 × 12"],["Elevación de piernas","3 × 12"],["Bicicleta abdominal","3 × 20"],["Bird-dog","3 × 10"],["Plancha","3 × 45 s"]]},
+5:{n:"Viernes · Circuito completo",c:"Cardio por intervalos 20 min (30 s fuerte / 60 s suave)",e:[["Sentadilla","4 rondas × 15"],["Flexiones","4 rondas × 10"],["Zancadas","4 rondas × 10 por pierna"],["Puente de glúteos","4 rondas × 15"],["Plancha","4 rondas × 40 s"]]}
+};
+function mac(k,p,c,g){return '<div><b>'+k+'</b><span>kcal</span></div><div><b>'+p+' g</b><span>proteína</span></div><div><b>'+c+' g</b><span>carbos</span></div><div><b>'+g+' g</b><span>grasas</span></div>'}
+var COM=[["Desayuno","8-9 am"],["Almuerzo","1-2 pm"],["Refrigerio","5-6 pm"],["Once ligero","9-10 pm"]];
+var HAB=[["Sin celular hasta terminar el entrenamiento","Desde que despiertas"],["Celular en no molestar durante la sesión","Gimnasio"],["Me dormí a la hora que me propuse","Meta: adelantar de a poco"]];
+var PF=(function(){try{return localStorage.getItem("miplan_perfil")==="yvi"?"yvi":"ivan"}catch(e){return "ivan"}})(),KEY=PF==="yvi"?"miplan_yvi_v1":"miplan_v1", S={}, dia=1, hoyKey="";
+var ZON={ivan:{1:["pecho","hombros","brazos","core"],2:["espalda","brazos","hombros"],3:["piernas","gluteos"],4:["pecho","espalda","brazos","core","piernas"],5:["pecho","espalda","piernas","core","brazos"]},yvi:{1:["piernas","gluteos","core"],2:["pecho","brazos","hombros","core"],3:["piernas","gluteos","core"],4:["espalda","core"],5:["pecho","espalda","piernas","core","gluteos"]}};
+function silueta(){
+ var z=ZON[PF][dia]||[];
+ function c(n){return z.indexOf(n)>-1?"z on":"z"}
+ function r(n,x,y,w,h,rx){return '<rect class="'+c(n)+'" x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="'+rx+'"/>'}
+ var hd='<circle class="h" cx="50" cy="15" r="11"/>';
+ var f=hd+r("hombros",20,40,60,12,6)+r("pecho",34,54,32,22,8)+r("core",38,78,24,26,8)+r("brazos",14,54,13,52,6)+r("brazos",73,54,13,52,6)+r("piernas",35,108,14,92,7)+r("piernas",51,108,14,92,7);
+ var b=hd+r("hombros",20,40,60,12,6)+r("espalda",32,54,36,34,8)+r("gluteos",34,90,32,20,9)+r("brazos",14,54,13,52,6)+r("brazos",73,54,13,52,6)+r("piernas",35,112,14,88,7)+r("piernas",51,112,14,88,7);
+ var ch=z.map(function(n){return '<span class="chip">'+(n==="gluteos"?"Glúteos":n.charAt(0).toUpperCase()+n.slice(1))+'</span>'}).join("");
+ document.getElementById("sil").innerHTML='<div class="sw"><figure><svg viewBox="0 0 100 205" role="img" aria-label="Cuerpo, vista de frente">'+f+'</svg><figcaption>Frente</figcaption></figure><figure><svg viewBox="0 0 100 205" role="img" aria-label="Cuerpo, vista de espalda">'+b+'</svg><figcaption>Espalda</figcaption></figure><div><b>Hoy trabajas</b><div>'+ch+'</div></div></div>'}
+function confetti(){var c=["#ff7a3d","#2f5bff","#12a56a","#e11d74","#ffd60a"],box=document.createElement("div");box.className="conf";box.setAttribute("aria-hidden","true");
+ for(var i=0;i<36;i++){var s=document.createElement("i");s.style.left=Math.random()*100+"%";s.style.background=c[i%5];s.style.animationDelay=(Math.random()*.4)+"s";s.style.setProperty("--dx",(Math.random()*160-80)+"px");box.appendChild(s)}
+ document.body.appendChild(box);setTimeout(function(){box.remove()},2400);try{navigator.vibrate&&navigator.vibrate([60,40,60])}catch(e){}}
+function cr(){if(!S._cr)S._cr={run:false,t0:0,acc:0};return S._cr}
+function crMs(){var c=cr();return c.acc+(c.run?Date.now()-c.t0:0)}
+function fmtT(ms){var s=Math.floor(ms/1000),h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=s%60;return (h<10?"0":"")+h+":"+(m<10?"0":"")+m+":"+(x<10?"0":"")+x}
+function crPaint(){var c=cr(),e=ent(ymd(new Date()));document.getElementById("ctime").textContent=fmtT(crMs());document.getElementById("cgo").textContent=c.run?"Pausar":(c.acc>0?"Continuar":"Iniciar");document.getElementById("csub").textContent="Guardado hoy: "+Math.round(e.min||0)+" min"}
+document.getElementById("cgo").onclick=function(){var c=cr();if(c.run){c.acc+=Date.now()-c.t0;c.run=false}else{c.t0=Date.now();c.run=true}save();crPaint()};
+document.getElementById("cfin").onclick=function(){var c=cr(),ms=crMs();if(ms<1000)return;var e=ent(ymd(new Date()));e.min=(e.min||0)+ms/60000;c.run=false;c.acc=0;c.t0=0;save();crPaint()};
+setInterval(function(){try{crPaint()}catch(e){}},1000);
+var RES="";
+function tiempo(ks,dias,rach,dp,np,prom){
+ var tot=0,ses=0,i,bars=[];
+ ks.forEach(function(k){var m=S[k]&&S[k].min;if(m>0){tot+=m;ses++}});
+ for(i=13;i>=0;i--){var x=new Date();x.setDate(x.getDate()-i);var q=S[ymd(x)];bars.push(Math.round((q&&q.min)||0))}
+ var mxr=Math.max.apply(null,bars),mx=mxr||1,sem=bars.slice(7).reduce(function(a,b){return a+b},0),h=Math.floor(tot/60),mm=Math.round(tot%60),pm=ses?Math.round(tot/ses):0,s="",w=300/14;
+ bars.forEach(function(v,j){var bh=v/mx*95;s+='<rect x="'+(j*w+3).toFixed(1)+'" y="'+(112-bh).toFixed(1)+'" width="'+(w-6).toFixed(1)+'" height="'+(v>0?Math.max(bh,3):0).toFixed(1)+'" rx="3" fill="var(--g1)"/>'});
+ document.getElementById("gtime").innerHTML=s;
+ document.getElementById("timeinfo").innerHTML='<span>Últimos 14 días</span><span>Máx. '+mxr+' min en un día</span>';
+ function f2(a,b){return '<div class="stat"><span>'+a+'</span><b>'+b+'</b></div>'}
+ document.getElementById("tstats").innerHTML=f2("Tiempo total",h+" h "+mm+" min")+f2("Sesiones guardadas",ses)+f2("Promedio por sesión",pm+" min")+f2("Últimos 7 días",Math.floor(sem/60)+" h "+(sem%60)+" min");
+ var kg=dp!=="—"&&parseFloat(dp)<=-1;
+ var L=[["\ud83d\udd25","Primer día completo","Cumple un día al 80% o más",dias>=1],["\u2b50","Racha de 5","5 días seguidos cumplidos",rach>=5],["\ud83d\udcc5","10 días cumplidos","Suma 10 días al 80% o más",dias>=10],["\ud83c\udfc6","30 días cumplidos","Suma 30 días al 80% o más",dias>=30],["\u23f1\ufe0f","Primera hora","Acumula 60 min de entrenamiento",tot>=60],["\ud83d\udcaa","10 horas entrenadas","Acumula 10 h de entrenamiento",tot>=600],["\u2696\ufe0f","Primer kilo menos","Baja 1 kg desde tu primer registro",kg]];
+ document.getElementById("logros").innerHTML=L.map(function(l){return '<div class="badge'+(l[3]?"":" off")+'"><i>'+(l[3]?l[0]:"\ud83d\udd12")+'</i><div><b>'+l[1]+'</b><span>'+l[2]+'</span></div></div>'}).join("");
+ RES="Mi progreso · "+(PF==="yvi"?"Yvi":"Iván")+"\n"+diaN()+"\n\n\u2705 Días cumplidos: "+dias+"\n\ud83d\udd25 Racha: "+rach+"\n\u2696\ufe0f Cambio de peso: "+(dp==="—"?"sin datos":(parseFloat(dp)>0?"+":"")+dp+" kg")+"\n\u23f1\ufe0f Tiempo entrenado: "+h+" h "+mm+" min ("+ses+" sesiones)\n\ud83d\udcf1 Celular (promedio): "+(prom==="—"?"sin datos":prom+" h")}
+document.getElementById("share").onclick=function(){var t=RES;function copiar(){try{navigator.clipboard.writeText(t).then(function(){alert("Resultados copiados. Pégalos donde quieras.")},function(){prompt("Copia tus resultados:",t)})}catch(e){prompt("Copia tus resultados:",t)}}
+ if(navigator.share){navigator.share({title:"Mi progreso",text:t}).catch(copiar)}else copiar()};
+var off=0;
+function getCOM(){return S._com||COM.map(function(x){return [x[0],x[1]+" · con proteína"]})}
+function getHAB(){return S._hab||HAB}
+function editList(box,key,arr,nuevo){
+ var c=JSON.parse(JSON.stringify(arr));S[key]=c;save();
+ c.forEach(function(x,i){var d=document.createElement("div");d.className="ed w";
+  d.innerHTML='<input aria-label="Nombre"><input aria-label="Detalle u horario"><button class="x" aria-label="Quitar">✕</button>';
+  var ip=d.querySelectorAll("input");ip[0].value=x[0];ip[1].value=x[1];
+  ip[0].oninput=function(){c[i][0]=ip[0].value;save()};
+  ip[1].oninput=function(){c[i][1]=ip[1].value;save()};
+  d.querySelector(".x").onclick=function(){c.splice(i,1);save();render()};
+  box.appendChild(d)});
+ var f=document.createElement("div");f.className="edfoot";
+ var a=document.createElement("button");a.className="btn";a.textContent="Agregar";a.onclick=function(){c.push(nuevo.slice());save();render()};
+ var r=document.createElement("button");r.className="btn ghost";r.textContent="Restaurar original";r.onclick=function(){if(confirm("¿Volver a la lista original?")){delete S[key];save();render()}};
+ f.appendChild(a);f.appendChild(r);box.appendChild(f)}
+var edit=false;
+function getR(wd){return (S._rut&&S._rut[wd])||(PF==="yvi"?RUTY[wd]:RUT[wd])}
+function setR(wd,r){if(!S._rut)S._rut={};S._rut[wd]=r;save()}
+function editor(R,r){
+ var c=JSON.parse(JSON.stringify(r));setR(dia,c);
+ c.e.forEach(function(x,i){var d=document.createElement("div");d.className="ed";
+  d.innerHTML='<input aria-label="Ejercicio"><input aria-label="Series y repeticiones"><button class="x" aria-label="Quitar ejercicio">✕</button>';
+  var ip=d.querySelectorAll("input");ip[0].value=x[0];ip[1].value=x[1];
+  ip[0].oninput=function(){c.e[i][0]=ip[0].value;save()};
+  ip[1].oninput=function(){c.e[i][1]=ip[1].value;save()};
+  d.querySelector(".x").onclick=function(){c.e.splice(i,1);save();render()};
+  R.appendChild(d)});
+ var cd=document.createElement("div");cd.className="ed c";cd.innerHTML='<input aria-label="Cardio">';
+ var ci=cd.querySelector("input");ci.value=c.c;ci.oninput=function(){c.c=ci.value;save()};R.appendChild(cd);
+ var f=document.createElement("div");f.className="edfoot";
+ f.innerHTML='<button class="btn" id="add">Agregar ejercicio</button><button class="btn ghost" id="rest">Restaurar original</button>';
+ R.appendChild(f);
+ document.getElementById("add").onclick=function(){c.e.push(["Nuevo ejercicio","3 × 10"]);save();render()};
+ document.getElementById("rest").onclick=function(){if(confirm("¿Volver a la rutina original de este día?")){delete S._rut[dia];save();render()}};
+}
+function load(){try{S=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){S={}}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function ymd(d){var m=d.getMonth()+1,x=d.getDate();return d.getFullYear()+"-"+(m<10?"0":"")+m+"-"+(x<10?"0":"")+x}
+function ent(k){if(!S[k])S[k]={};return S[k]}
+function fechaDe(wd,o){var d=new Date(),cur=d.getDay()||7;d.setDate(d.getDate()+(wd-cur)+7*(o===undefined?off:o));return ymd(d)}
+function ids(wd){var r=getR(wd),a=[],i;for(i=0;i<r.e.length;i++)a.push("e"+i);a.push("c");for(i=0;i<getCOM().length;i++)a.push("m"+i);for(i=0;i<getHAB().length;i++)a.push("h"+i);return a}
+function pct(k,wd){var e=ent(k),a=ids(wd),n=0;a.forEach(function(x){if(e[x])n++});return Math.round(n/a.length*100)}
+function fila(id,t,s,e,k,kg){var d=document.createElement("label");d.className="row"+(e[id]?" on":"");
+d.innerHTML='<input type="checkbox"'+(e[id]?" checked":"")+'><div><b>'+t+'</b><span>'+s+'</span></div>'+(kg?'<input class="kg" type="number" inputmode="decimal" step="0.5" placeholder="kg" aria-label="Peso usado">':'');
+d.querySelector("input").onchange=function(ev){e[id]=ev.target.checked;save();d.className="row"+(e[id]?" on pop":"");try{navigator.vibrate&&navigator.vibrate(12)}catch(x){}var was=document.getElementById("barra").className==="full";upd();if(!was&&document.getElementById("barra").className==="full")confetti()};
+var q=d.querySelector(".kg");if(q){q.value=e["k"+id]||"";q.oninput=function(){var v=parseFloat(q.value.replace(",","."));if(isNaN(v))delete e["k"+id];else e["k"+id]=v;save()}}return d}
+function render(){
+ var k=fechaDe(dia),e=ent(k),r=getR(dia);hoyKey=k;
+ document.getElementById("edbtn").textContent=edit?"Listo":"Editar plan";
+ document.getElementById("wlbl").textContent=off===0?"Esta semana":off===-1?"Semana pasada":"Hace "+(-off)+" semanas";
+ document.getElementById("tit").textContent=r.n;
+ var R=document.getElementById("rutina");R.innerHTML="";
+ if(edit){editor(R,r)}else{
+ var cal=fila("w",PF==="ivan"?"Calentamiento de hombro":"Calentamiento",PF==="ivan"?"Rotaciones, banda y series ligeras antes de empujar":"Movilidad y series ligeras antes de empezar",e,k);R.appendChild(cal);
+ r.e.forEach(function(x,i){R.appendChild(fila("e"+i,x[0],x[1],e,k,true))});
+ R.appendChild(fila("c","Cardio",r.c,e,k));}
+ var C=document.getElementById("comidas");C.innerHTML="";
+ if(edit){editList(C,"_com",getCOM(),["Nueva comida","Hora"])}else getCOM().forEach(function(x,i){C.appendChild(fila("m"+i,x[0],x[1],e,k))});
+ var H=document.getElementById("habitos");H.innerHTML="";
+ if(edit){editList(H,"_hab",getHAB(),["Nuevo hábito","Detalle"])}else getHAB().forEach(function(x,i){H.appendChild(fila("h"+i,x[0],x[1],e,k))});
+ document.getElementById("peso").value=e.peso||"";
+ document.getElementById("cel").value=e.cel||"";
+ document.getElementById("nota").value=e.nota||"";
+ crPaint();silueta();document.getElementById("nota").placeholder=PF==="ivan"?"Cómo te sentiste, el hombro, la energía…":"Cómo te sentiste, la energía…";
+ document.getElementById("macros").innerHTML=PF==="ivan"?mac("2.500",170,295,70):mac("2.080",145,240,60);
+ 
+ var D=document.getElementById("days");D.innerHTML="";
+ ["L","M","X","J","V"].forEach(function(n,i){var b=document.createElement("button");b.textContent=n;b.setAttribute("aria-selected",(i+1)===dia);
+  if(pct(fechaDe(i+1),i+1)===100)b.className="done";b.onclick=function(){dia=i+1;render()};D.appendChild(b)});
+ upd();
+}
+function ids2(){var a=ids(dia);a.push("w");return a}
+function upd(){var e=ent(hoyKey),a=ids2(),n=0;a.forEach(function(x){if(e[x])n++});var p=Math.round(n/a.length*100);
+ document.getElementById("barra").style.width=p+"%";document.getElementById("pct").textContent=p+"% del día";
+ document.getElementById("resumen").textContent=p===100?"¡Día completo! 🎉":n+" de "+a.length+" listas";document.getElementById("barra").className=p===100?"full":"";
+ var btn=document.querySelectorAll("#days button")[dia-1];if(btn)btn.className=p===100?"done":""}
+function num(id,campo){document.getElementById(id).oninput=function(ev){var v=parseFloat(ev.target.value.replace(",","."));var e=ent(hoyKey);if(isNaN(v))delete e[campo];else e[campo]=v;save()}}
+function linea(svgId,pts,infoId,u){var s=document.getElementById(svgId),i=document.getElementById(infoId);
+ if(pts.length<2){s.innerHTML='';i.innerHTML='<span>Registra al menos 2 días para ver la curva.</span>';return}
+ var v=pts.map(function(p){return p[1]}),mn=Math.min.apply(null,v),mx=Math.max.apply(null,v);if(mx===mn){mx+=1;mn-=1}
+ var d=pts.map(function(p,j){return (10+j*(280/(pts.length-1))).toFixed(1)+","+(105-(p[1]-mn)/(mx-mn)*90).toFixed(1)}).join(" ");
+ s.innerHTML='<polyline points="'+d+'" fill="none" stroke="var(--acc)" stroke-width="3" vector-effect="non-scaling-stroke"/>';
+ i.innerHTML='<span>'+pts[0][1]+u+' → '+pts[pts.length-1][1]+u+'</span><span>'+pts.length+' registros</span>'}
+function prog(){
+ var ks=Object.keys(S).filter(function(k){return k.charAt(0)!=="_"}).sort(),dias=0,rach=0,tot=0,pesos=[],cels=[];
+ ks.forEach(function(k){var e=S[k],d=new Date(k+"T12:00:00"),wd=d.getDay()||7;if(wd<=5){var a=ids(wd);a.push("w");var n=0;a.forEach(function(x){if(e[x])n++});if(n/a.length>=0.8){dias++}}
+  if(e.peso)pesos.push([k,e.peso]);if(e.cel!==undefined)cels.push([k,e.cel])});
+ var c=new Date();for(var i=0;i<60;i++){var wd=c.getDay()||7;if(wd<=5){var e2=S[ymd(c)]||{},a2=ids(wd);a2.push("w");var n2=0;a2.forEach(function(x){if(e2[x])n2++});
+  if(n2/a2.length>=0.8)rach++;else if(i>0)break;else if(wd<=5&&i===0){}}c.setDate(c.getDate()-1)}
+ var uc=cels.slice(-7),prom=uc.length?(uc.reduce(function(s,p){return s+p[1]},0)/uc.length).toFixed(1):"—";
+ var dp=pesos.length>1?(pesos[pesos.length-1][1]-pesos[0][1]).toFixed(1):"—";
+ document.getElementById("stats").innerHTML=
+ '<div class="stat"><span>Días cumplidos (80% o más)</span><b>'+dias+'</b></div>'+
+ '<div class="stat"><span>Racha actual (lunes a viernes)</span><b>'+rach+'</b></div>'+
+ '<div class="stat"><span>Cambio de peso</span><b>'+(dp==="—"?dp:(dp>0?"+":"")+dp+" kg")+'</b></div>'+
+ '<div class="stat"><span>Celular, promedio de 7 registros</span><b>'+prom+(prom==="—"?"":" h")+'</b></div>';
+ function esc(s){return String(s).replace(/[&<>]/g,function(c){return c==="&"?"&amp;":c==="<"?"&lt;":"&gt;"})}
+ function semana(ks){var nm=["Lunes","Martes","Miércoles","Jueves","Viernes"],tp=0,h="",j;
+ for(j=1;j<=5;j++){var pj=pct(fechaDe(j,0),j);tp+=pj;h+='<div class="stat"><span>'+nm[j-1]+'</span><b>'+pj+'%</b></div>'}
+ h+='<div class="stat"><span>Promedio semanal</span><b>'+Math.round(tp/5)+'%</b></div>';
+ document.getElementById("sem").innerHTML=h;
+ var nl=ks.filter(function(k){return S[k]&&S[k].nota}).slice(-5).reverse(),t="";
+ nl.forEach(function(k){t+='<div class="stat"><span>'+k.slice(5)+'</span><span style="text-align:right">'+esc(S[k].nota)+'</span></div>'});
+ document.getElementById("notas").innerHTML=t||'<div class="stat"><span>Aún no hay notas.</span></div>'}
+ semana(ks);tiempo(ks,dias,rach,dp,pesos.length,prom);
+ linea("gpeso",pesos,"pesoinfo"," kg");linea("gcel",cels,"celinfo"," h")}
+document.querySelectorAll(".tabs button").forEach(function(b){b.onclick=function(){
+ document.querySelectorAll(".tabs button").forEach(function(x){x.setAttribute("aria-selected",x===b)});
+ document.getElementById("hoy").className=b.dataset.t==="hoy"?"":"hide";
+ document.getElementById("prog").className=b.dataset.t==="prog"?"":"hide";if(b.dataset.t==="prog")prog()}});
+document.getElementById("reset").onclick=function(){if(confirm("¿Borrar todos tus registros? No se puede deshacer.")){S={};save();render();prog()}};
+load();
+if(!S._start){S._start=ymd(new Date());save()}
+function diaN(){var n=Math.floor((new Date(ymd(new Date())+"T12:00:00")-new Date("2026-12-01T12:00:00"))/864e5)+1;return n<1?"Faltan "+(1-n)+(1-n===1?" día":" días")+" para empezar":n>90?"Plan completado":"Día "+n+" de 90"}
+var hoy=new Date(),wd0=hoy.getDay();dia=(wd0>=1&&wd0<=5)?wd0:1;
+document.getElementById("fecha").textContent=diaN()+" · "+hoy.toLocaleDateString("es-CL",{weekday:"long",day:"numeric",month:"long"})+(wd0===0||wd0===6?" · hoy descansas, mostrando el lunes":"");
+var VER=[["Todo lo puedo en Cristo que me fortalece.","Filipenses 4:13"],
+["Mira que te mando que te esfuerces y seas valiente; no temas ni desmayes, porque Jehová tu Dios estará contigo en dondequiera que vayas.","Josué 1:9"],
+["No temas, porque yo estoy contigo; no desmayes, porque yo soy tu Dios que te esfuerzo; siempre te ayudaré, siempre te sustentaré.","Isaías 41:10"],
+["Dios es nuestro amparo y fortaleza, nuestro pronto auxilio en las tribulaciones.","Salmo 46:1"],
+["Fíate de Jehová de todo tu corazón, y no te apoyes en tu propia prudencia. Reconócelo en todos tus caminos, y él enderezará tus veredas.","Proverbios 3:5-6"],
+["No nos cansemos, pues, de hacer bien; porque a su tiempo segaremos, si no desmayamos.","Gálatas 6:9"],
+["Porque no nos ha dado Dios espíritu de cobardía, sino de poder, de amor y de dominio propio.","2 Timoteo 1:7"],
+["Encomienda a Jehová tus obras, y tus pensamientos serán afirmados.","Proverbios 16:3"],
+["Mi socorro viene de Jehová, que hizo los cielos y la tierra.","Salmo 121:2"],
+["Los que esperan a Jehová tendrán nuevas fuerzas; levantarán alas como las águilas; correrán, y no se cansarán; caminarán, y no se fatigarán.","Isaías 40:31"],
+["Antes, en todas estas cosas somos más que vencedores por medio de aquel que nos amó.","Romanos 8:37"],
+["Esforzaos y cobrad ánimo; no temáis, ni tengáis miedo, porque Jehová tu Dios es el que va contigo; no te dejará, ni te desamparará.","Deuteronomio 31:6"],
+["Sobre toda cosa guardada, guarda tu corazón; porque de él mana la vida.","Proverbios 4:23"],
+["Despojémonos de todo peso y del pecado que nos asedia, y corramos con paciencia la carrera que tenemos por delante.","Hebreos 12:1"],
+["Encomienda a Jehová tu camino, y confía en él; y él hará.","Salmo 37:5"],
+["Y todo lo que hagáis, hacedlo de corazón, como para el Señor y no para los hombres.","Colosenses 3:23"],
+["Este es el día que hizo Jehová; nos gozaremos y alegraremos en él.","Salmo 118:24"],
+["Nuevas son cada mañana; grande es tu fidelidad.","Lamentaciones 3:23"],
+["El alma del perezoso desea, y nada alcanza; mas el alma de los diligentes será prosperada.","Proverbios 13:4"],
+["Mirad, pues, con diligencia cómo andéis, no como necios sino como sabios, aprovechando bien el tiempo.","Efesios 5:15-16"],
+["Enséñanos de tal modo a contar nuestros días, que traigamos al corazón sabiduría.","Salmo 90:12"],
+["Como ciudad derribada y sin muro es el hombre cuyo espíritu no tiene rienda.","Proverbios 25:28"],
+["Bástate mi gracia; porque mi poder se perfecciona en la debilidad.","2 Corintios 12:9"],
+["Velad, estad firmes en la fe; portaos varonilmente, y esforzaos.","1 Corintios 16:13"],
+["Jehová es mi pastor; nada me faltará.","Salmo 23:1"]];
+(function(){var dd=new Date(),n=Math.round((new Date(dd.getFullYear(),dd.getMonth(),dd.getDate())-new Date(2026,0,1))/864e5),v=VER[((n%VER.length)+VER.length)%VER.length];
+ document.getElementById("verse").innerHTML='<p>“'+v[0]+'”</p><small>'+v[1]+'</small>'})();
+function titulos(){
+ if(!S._start){S._start=ymd(new Date());save()}
+ document.getElementById("h1").textContent=PF==="yvi"?"Plan de Yvi":"Plan de Iván";document.body.setAttribute("data-p",PF);
+ document.querySelectorAll("#perf button").forEach(function(b){b.setAttribute("aria-selected",b.dataset.p===PF)});
+ document.getElementById("fecha").textContent=diaN()+" · "+hoy.toLocaleDateString("es-CL",{weekday:"long",day:"numeric",month:"long"})+(wd0===0||wd0===6?" · hoy descansas, mostrando el lunes":"")}
+document.querySelectorAll("#perf button").forEach(function(b){b.onclick=function(){if(b.dataset.p===PF)return;if(authed(b.dataset.p))cambiarPerfil(b.dataset.p);else abrirGate(b.dataset.p)}});
+var GH={ivan:"9b23df31a5582be0857e3fe89049e3de61d4a3d6abb58cd51baa9e7cbad694cd",yvi:"2348d2e1d90f2429f340e4421128363225fee0c7846565b57060f01285dfb85e"},selG=PF;
+function authed(p){try{return sessionStorage.getItem("miplan_auth_"+p)==="1"}catch(e){return false}}
+function sha(t){return crypto.subtle.digest("SHA-256",new TextEncoder().encode(t)).then(function(b){return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,"0")}).join("")})}
+function selGate(p){selG=p;document.body.setAttribute("data-p",p);document.querySelectorAll("#gp button").forEach(function(b){b.setAttribute("aria-selected",b.dataset.g===p)});document.getElementById("gerr").textContent=""}
+function abrirGate(p){document.body.classList.add("lock");document.getElementById("gate").className="gate";selGate(p);var i=document.getElementById("gpw");i.value="";i.type="password";document.getElementById("gcan").className="btn ghost"+(authed(PF)?"":" hide");i.focus()}
+function cerrarGate(){document.getElementById("gate").className="gate hide";document.body.classList.remove("lock");document.body.setAttribute("data-p",PF)}
+function cambiarPerfil(p){PF=p;KEY=PF==="yvi"?"miplan_yvi_v1":"miplan_v1";try{localStorage.setItem("miplan_perfil",PF)}catch(e){}load();edit=false;titulos();render();if(document.getElementById("prog").className!=="hide")prog()}
+function entrar(){var pw=document.getElementById("gpw").value,er=document.getElementById("gerr");
+ if(!pw){er.textContent="Escribe tu contraseña.";return}
+ sha(selG+":"+pw).then(function(h){
+  if(h===GH[selG]){try{sessionStorage.setItem("miplan_auth_"+selG,"1")}catch(e){}if(selG!==PF)cambiarPerfil(selG);cerrarGate()}
+  else{er.textContent="Contraseña incorrecta.";document.getElementById("gpw").select()}
+ }).catch(function(){er.textContent="Este navegador no permite verificar la contraseña."})}
+document.querySelectorAll("#gp button").forEach(function(b){b.onclick=function(){selGate(b.dataset.g)}});
+document.getElementById("gok").onclick=entrar;
+document.getElementById("gpw").onkeydown=function(ev){if(ev.key==="Enter")entrar()};
+document.getElementById("gshow").onclick=function(){var i=document.getElementById("gpw");i.type=i.type==="password"?"text":"password"};
+document.getElementById("gcan").onclick=cerrarGate;
+document.getElementById("logout").onclick=function(){try{sessionStorage.removeItem("miplan_auth_ivan");sessionStorage.removeItem("miplan_auth_yvi")}catch(e){}abrirGate(PF)};
+document.getElementById("edbtn").onclick=function(){edit=!edit;render()};
+document.getElementById("wprev").onclick=function(){off--;render()};
+document.getElementById("wnext").onclick=function(){if(off<0){off++;render()}};
+document.getElementById("nota").oninput=function(ev){var e=ent(hoyKey);if(ev.target.value)e.nota=ev.target.value;else delete e.nota;save()};
+var tm=null,left=0,rt=document.getElementById("rtime");
+function fmt(s){var m=Math.floor(s/60),x=s%60;return m+":"+(x<10?"0":"")+x}
+function beep(){try{var a=new (window.AudioContext||window.webkitAudioContext)(),o=a.createOscillator();o.connect(a.destination);o.frequency.value=880;o.start();o.stop(a.currentTime+.4)}catch(e){}}
+function parar(t){clearInterval(tm);tm=null;rt.textContent=t||"Descanso"}
+document.querySelectorAll(".rest button[data-s]").forEach(function(b){b.onclick=function(){parar();left=+b.dataset.s;rt.textContent=fmt(left);
+ tm=setInterval(function(){left--;if(left<=0){parar("¡Listo!");try{navigator.vibrate&&navigator.vibrate([300,150,300])}catch(e){}beep()}else rt.textContent=fmt(left)},1000)}});
+document.getElementById("rstop").onclick=function(){parar()};
+var bk=document.getElementById("bk");
+document.getElementById("bkgen").onclick=function(){bk.value=JSON.stringify(S);bk.select();try{navigator.clipboard.writeText(bk.value)}catch(e){}};
+document.getElementById("bkres").onclick=function(){try{var o=JSON.parse(bk.value);if(o&&typeof o==="object"&&confirm("¿Reemplazar tus datos actuales por este respaldo?")){S=o;save();render();prog()}}catch(e){alert("El texto no es un respaldo válido.")}};
+titulos();num("peso","peso");num("cel","cel");render();if(!authed(PF))abrirGate(PF);
+</script>
+</body>
+</html>
